@@ -46,7 +46,7 @@ const mapStateToProps = (state,ownProps) => {  //见名知意，把state转换�
     return {
       data:state.data,
     //   active: ownProps.filter === state.visibilityFilter,
-      todos: getVisibleTodos(state.todos, state.visibilityFilter)
+    //   todos: getVisibleTodos(state.todos, state.visibilityFilter)
     };
   };
 
