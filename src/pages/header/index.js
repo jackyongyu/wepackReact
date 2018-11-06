@@ -19,7 +19,7 @@ class Headers extends React.Component {
     }
 
     render() {
-        console.log(this.props.data)
+        console.log(this.props)
         return (
             <div id="home-header" className="clear-fix">
                 <div className="home-header-left float-left">
@@ -40,11 +40,13 @@ class Headers extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {  //见名知意，把state转换为props
+const mapStateToProps = (state,ownProps) => {  //见名知意，把state转换为props
     //可以打印state看看数据结构，然后放到data里
     console.log(state)
     return {
-      data:state.data
+      data:state.data,
+    //   active: ownProps.filter === state.visibilityFilter,
+      todos: getVisibleTodos(state.todos, state.visibilityFilter)
     };
   };
 
