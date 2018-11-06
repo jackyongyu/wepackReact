@@ -36,7 +36,7 @@ module.exports = {
         // 自动压缩代码
         compress: true,
         // 服务端口为1208
-        port: 8088,
+        port: 8888,
         // 自动打开浏览器
         open: true
     },
@@ -45,12 +45,23 @@ module.exports = {
         // 配置loader
     module: {
         // 根据文件后缀匹配规则
-        rules: [
-            // 配置js/jsx语法解析
+        rules:[
+              // 配置js/jsx语法解析
             { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
-           
+            // { test: /\.css$/, loader: "style-loader!css-loader" },
+            {test:/\.(png|woff|woff2|svg|ttf|eot)($|\?)/i,loader:'url-loader?limit==5000'},
+            {test: /\.less|css$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "less-loader" // compiles Less to CSS
+                }]
+            }
         ]
 
     },
+   
 
 }
