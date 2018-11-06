@@ -11,7 +11,7 @@ let htmlWebpackPlugin = new HtmlWebpackPlugin({
          "hash":true,
          "env":{
              "developement":{
-                 "extraBabelPlugins":[
+                 "extraBabelPlugins":[//?
                     ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
                     ]
              }
@@ -48,7 +48,6 @@ module.exports = {
         rules:[
               // 配置js/jsx语法解析
             { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
-            // { test: /\.css$/, loader: "style-loader!css-loader" },
             {test:/\.(png|woff|woff2|svg|ttf|eot)($|\?)/i,loader:'url-loader?limit==5000'},
             {test: /\.less|css$/,
                 use: [{

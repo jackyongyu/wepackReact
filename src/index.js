@@ -1,6 +1,7 @@
 import React from 'react';
 import dva from 'dva';
 import Header from './pages/js/index';
+import './index.less'
 // 创建应用
 const app = dva();
 // 注册视图
