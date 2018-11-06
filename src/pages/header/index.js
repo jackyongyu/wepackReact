@@ -9,6 +9,10 @@ export default class Header extends React.Component {
 
         };
     }
+   
+   componentDidMount(){
+    //    console.log(2);
+   }
 
     render() {
         return ( 
