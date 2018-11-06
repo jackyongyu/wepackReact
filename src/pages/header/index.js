@@ -22,6 +22,7 @@ export default class Header extends React.Component {
                  </div>
                  <div className="home-header-middle">
                     <div className="search-container">
+                       <i className="icon-search"></i>
                        <input type="text" placeholder="请输入关键字"></input>
                     </div>
                  </div>

@@ -7,7 +7,6 @@ export default class Total extends React.Component {
         return ( 
             <div>
                 <Header/>
-                
             </div>
              
             )
