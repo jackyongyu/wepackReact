@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './index.less' ;
 import '../../static/style.css';
+import { connect } from 'dva';
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -11,10 +12,14 @@ export default class Header extends React.Component {
     }
    
    componentDidMount(){
-    //    console.log(2);
+       const {dispatch} = this.props;
+    // dispatch({
+    //     type: 'getUser',
+    //   })
    }
 
     render() {
+        console.log(this.props)
         return ( 
              <div id="home-header" className="clear-fix">
                  <div className="home-header-left float-left">
@@ -34,3 +39,16 @@ export default class Header extends React.Component {
             )
     }
 }
+
+function mapStateToProps(state) {
+    return { todos: state.todos };
+  }
+  connect(mapStateToProps)(Header);
+
+
+
+
+
+
+
+
