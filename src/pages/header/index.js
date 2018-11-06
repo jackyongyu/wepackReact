@@ -35,19 +35,16 @@ class Headers extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div>
+                {/* <div>
                     <div>Highest Record: {count.record}</div>
                     <div>{count.current}</div>
                     <div>
-                        {/*dispatch 是一个函数方法，用来将 Action 发送给 Model 中的State。
-                     dispatch方法从哪里来？被 connect 的 Component 会自动在 Props 中拥有 dispatch 方法。
-                  */}
                         <button onClick={() => { dispatch({ type: 'count/add' }); }}>+</button>
                         <button onClick={() => { dispatch({ type: 'count/minus' }); }}>-</button>
                         <button onClick={() => { dispatch({ type: 'count/showPic' }); }}>show</button>
                     </div>
                     {count.show ? <img src="1.jpeg" alt="新垣结衣" /> : null}
-                </div>
+                </div> */}
             </div>
         )
     }
@@ -58,9 +55,11 @@ function mapStateToProps(state) {
         count: state.count
     };
 }
-
+  
 const Header = connect(mapStateToProps)(Headers);
 export default Header;
+/*dispatch 是一个函数方法，用来将 Action 发送给 Model 中的State。
+dispatch方法从哪里来？被 connect 的 Component 会自动在 Props 中拥有 dispatch 方法。*/
 
 
 

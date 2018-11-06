@@ -7,15 +7,15 @@ let htmlWebpackPlugin = new HtmlWebpackPlugin({
     filename: 'index.html',
     // 虚拟html的模板为 src下的index.html
     template: path.resolve(__dirname, './src/index.html'),
-    option:{
-         "hash":true,
-         "env":{
-             "developement":{
-                 "extraBabelPlugins":[//?
+    option: {
+        "hash": true,
+        "env": {
+            "developement": {
+                "extraBabelPlugins": [//?
                     ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
-                    ]
-             }
-         }
+                ]
+            }
+        }
     }
 })
 
@@ -42,14 +42,15 @@ module.exports = {
     },
     // 装载虚拟目录插件
     plugins: [htmlWebpackPlugin],
-        // 配置loader
+    // 配置loader
     module: {
         // 根据文件后缀匹配规则
-        rules:[
-              // 配置js/jsx语法解析
-            {test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
-            {test:/\.(png|woff|woff2|svg|ttf|eot)($|\?)/i,loader:'url-loader?limit==5000'},
-            {test: /\.less|css$/,
+        rules: [
+            // 配置js/jsx语法解析
+            { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
+            { test: /\.(png|woff|woff2|svg|ttf|eot)($|\?)/i, loader: 'url-loader?limit==5000' },
+            {
+                test: /\.less|css$/,
                 use: [{
                     loader: "style-loader" // creates style nodes from JS strings
                 }, {
@@ -61,6 +62,6 @@ module.exports = {
         ]
 
     },
-   
+
 
 }
