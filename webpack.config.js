@@ -6,7 +6,17 @@ let htmlWebpackPlugin = new HtmlWebpackPlugin({
     // 虚拟的html文件名 index.html
     filename: 'index.html',
     // 虚拟html的模板为 src下的index.html
-    template: path.resolve(__dirname, './src/index.html')
+    template: path.resolve(__dirname, './src/index.html'),
+    option:{
+         "hash":true,
+         "env":{
+             "developement":{
+                 "extraBabelPlugins":[
+                    ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
+                    ]
+             }
+         }
+    }
 })
 
 module.exports = {
@@ -38,14 +48,7 @@ module.exports = {
         rules: [
             // 配置js/jsx语法解析
             { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
-            {
-                test: /\.scss$/,
-                use: [
-                    "style-loader", // creates style nodes from JS strings
-                    "css-loader", // translates CSS into CommonJS
-                    "sass-loader" // compiles Sass to CSS
-                ]
-            }
+           
         ]
 
     },
