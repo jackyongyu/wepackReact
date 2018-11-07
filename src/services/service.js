@@ -16,3 +16,14 @@ import request from '../utils/request';
   })
   */
 }
+export function getImgUrl(prames){
+  return request(`http://yapi.cnabc-inc.com/mock/80/getImgUrl/get/v1?${prames}`)
+}
+
+
+
+
+
+
+
+

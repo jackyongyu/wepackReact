@@ -14,9 +14,9 @@ export default {
 
   effects: {
     // *供组件调用的方法名({ payload: { 参数 }}, { call, put }) {
-        *getUserInfor({ payload: { id }}, { call, put }) {
+    *getUserInfor({ payload: { id }}, { call, put }) {
     //   const result = yield call(自定义名.service中的方法名, 参数);//如果使用  {参数}  ，则是一个对象
-          const result = yield call(Shit.getUser, {});
+        const result = yield call(Shit.getUser, {});
       //把请求的数据保存起来
       //数据更新会带动页面重新渲染
         yield put({
@@ -25,7 +25,19 @@ export default {
             data: result.data  //网络返回的要保留的数据
             }
         })
-    }
+    },
+     *getImgObj({}, { call, put }) {
+       const result = yield call (Shit.getImgUrl,{})
+       console.log(result);
+       
+       yield put({
+         type:'save',
+         payload:{
+          data: result.data  //网络返回的要保留的数据
+          }
+       })
+     }
+
   },
 
   reducers: {
@@ -34,8 +46,10 @@ export default {
          ...state, 
           data: data  //第一个data是state的，第二个data是payload的
       };
-     },
+     }
+
   },
+  
 }
 
 
