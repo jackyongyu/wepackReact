@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import './index.less';
+import './header.less';
 import '../../static/style.css';
 import { connect  } from 'dva';
 
 class Header extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {CityName:''};
+        this.state = {
+            
+        };
     }
 
     componentDidMount() {

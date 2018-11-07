@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import Header from './header/index';
+import Header from './components/header';
+import Swipe from './components/swipe';
 
 export default class Total extends React.Component {
 
@@ -7,6 +8,7 @@ export default class Total extends React.Component {
         return ( 
             <div>
                 <Header/>
+                <Swipe/>
             </div>
              
             )
