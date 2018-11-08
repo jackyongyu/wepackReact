@@ -4,7 +4,7 @@ export default {
   namespace: 'setting',
 
   state: {
-    data: ''   //reducers中接收数据
+    data: '',   //reducers中接收数据
   },
 
 //   subscriptions: {
@@ -42,14 +42,12 @@ export default {
 
   reducers: {
      save(state, { payload: { data } }) {
-     let dataAssign = Object.assign({}, data);
-     console.log( data);
        return {
          ...state, 
-          data:dataAssign,  //第一个data是state的，第二个data是payload的
+          // data: Object.assign(state.data, data),  //第一个data是state的，第二个data是payload的
+          data: { ...state.data, ...data },
       };
      },
-
   },
   
 }

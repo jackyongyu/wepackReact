@@ -21,7 +21,7 @@ class Swipe extends React.Component {
     }
 
     render() {
-        const { data } = this.props;
+        const {data} = this.props;
         const opt = {
             auto: 3000,
             callback: ((index) => {
@@ -30,14 +30,15 @@ class Swipe extends React.Component {
                 })
             }).bind(this),
         }
-        console.log(data);
+        
+        console.log(data.urlImg)
         return (
             <div>
-                <ReactSwipe className="carosel" swipeOptions={opt}>
-                    {/* {ImgUrl !== 'undinfind' ? ImgUrl.forEach(key =>
-                        <div>key</div>) : null
-                    } */}
-                    <div>page1</div>
+                <ReactSwipe className="carosel" swipeOptions={opt}> 
+                    
+                    <div>{data.urlImg!== undefined ?Object.keys(data.ImgUrl).forEach(key =>
+                        consele.log(key)) : ''
+                    }</div>
                     <div>page2</div>
                     {/* <div>page3</div> */}
                 </ReactSwipe>
@@ -54,6 +55,7 @@ class Swipe extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    // console.log(state);
     return {
         data: state.setting.data,
     };
