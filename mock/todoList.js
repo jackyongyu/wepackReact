@@ -1,15 +1,17 @@
 import Mock from 'mockjs';
 
-Mock.mock(/\/todoList.mock/, {
-'code': 0,
+Mock.setup({temiout:'12000-2600'})
+Mock.mock('/data', {
     'data': {
-'list|1-10': [{
-// 属性 id 是一个自增数，起始值为 1，每次增 1
-            'id|+1': 1,
-            'title': '前端人人@id',
-            'status': 1
-        }]
-    },
-    'message': '操作成功',
-    'systemDate': new Date().getTime()
+        first:'@FIRST',
+        middle:'@FIRST',
+        last:'@LAST',
+        full:'@first @middle @last'
+        }
 });
+
+Mock.mock('./number',{
+    data:{
+        "num|1-100":123
+    }
+})
