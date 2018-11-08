@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactSwipe from 'react-swipe';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { connect } from 'dva';
 import './swipe.less';
 
@@ -9,6 +10,7 @@ class Swipe extends React.Component {
         this.state = {
             index: '',
         }
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
 
     componentDidMount() {
@@ -19,9 +21,8 @@ class Swipe extends React.Component {
     }
 
     render() {
-        const {data}=this.props;
-        console.log(data);
-        const opt = {   
+        const { data } = this.props;
+        const opt = {
             auto: 3000,
             callback: ((index) => {
                 this.setState({
@@ -29,18 +30,22 @@ class Swipe extends React.Component {
                 })
             }).bind(this),
         }
+        console.log(data);
         return (
             <div>
                 <ReactSwipe className="carosel" swipeOptions={opt}>
+                    {/* {ImgUrl !== 'undinfind' ? ImgUrl.forEach(key =>
+                        <div>key</div>) : null
+                    } */}
                     <div>page1</div>
                     <div>page2</div>
-                    <div>page3</div>
+                    {/* <div>page3</div> */}
                 </ReactSwipe>
                 <div className="pointContent">
                     <ul>
                         <li className={this.state.index === 0 ? "selected" : ""}></li>
                         <li className={this.state.index === 1 ? "selected" : ""}></li>
-                        <li className={this.state.index === 2 ? "selected" : ""}></li>
+                        {/* <li className={this.state.index === 2 ? "selected" : ""}></li> */}
                     </ul>
                 </div>
             </div>
@@ -49,9 +54,6 @@ class Swipe extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    //见名知意，把state转换为props
-    //可以打印state看看数据结构，然后放到data里
-    console.log(state);
     return {
         data: state.setting.data,
     };

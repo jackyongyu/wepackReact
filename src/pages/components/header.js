@@ -15,9 +15,6 @@ class Header extends React.Component {
         const { dispatch } = this.props;
         dispatch({
             type:"setting/getUserInfor",
-            payload: {
-                id:123,
-              }
         })
     }
 
