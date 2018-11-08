@@ -8,7 +8,7 @@ class Swipe extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            index: '',
+            index:0,
         }
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
@@ -30,23 +30,21 @@ class Swipe extends React.Component {
                 })
             }).bind(this),
         }
-        
-        console.log(data.urlImg)
+        const obj=(obj)=>{
+            return Object.keys(obj).map(key =><li className="liStyle" key={key}><img src={obj[key]}/></li>)
+        }
         return (
-            <div>
+            <div style={{background:'#fff'}}>
                 <ReactSwipe className="carosel" swipeOptions={opt}> 
-                    
-                    <div>{data.urlImg!== undefined ?Object.keys(data.ImgUrl).forEach(key =>
-                        consele.log(key)) : ''
-                    }</div>
-                    <div>page2</div>
-                    {/* <div>page3</div> */}
+                    <div>{data.urlImg?obj(data.urlImg[0]):''}</div>
+                    <div>{data.urlImg?obj(data.urlImg[1]):''}</div>
+                    <div>{data.urlImg?obj(data.urlImg[2]):''}</div>
                 </ReactSwipe>
                 <div className="pointContent">
                     <ul>
-                        <li className={this.state.index === 0 ? "selected" : ""}></li>
-                        <li className={this.state.index === 1 ? "selected" : ""}></li>
-                        {/* <li className={this.state.index === 2 ? "selected" : ""}></li> */}
+                        {data.urlImg?Object.keys(data.urlImg).map(key =>
+                        <li  className={ key == this.state.index ? "selected" : ""} key={key}></li>
+                        ):''}
                     </ul>
                 </div>
             </div>
@@ -55,7 +53,6 @@ class Swipe extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state);
     return {
         data: state.setting.data,
     };
