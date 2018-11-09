@@ -1,14 +1,17 @@
 import React from 'react';
-import { Router, Route, Switch } from 'dva/router';
+import { routerRedux, Route,Router , Switch } from 'dva/router';
 import Total from '../pages/index';
+import Search from '../pages/components/search/index';
  
-function RouterConfig({ history }) {
+const { ConnectedRouter } = routerRedux;
+function RouterConfig({ history,app  }) {
   return (
-    <Router history={history}>
+    <ConnectedRouter history={history}>
       <Switch>
         <Route path="/" exact component={Total} />
+        <Route path="/search" component={Search}/>
       </Switch>
-    </Router>
+    </ConnectedRouter>
   );
 }
 

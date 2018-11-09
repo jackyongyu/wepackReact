@@ -14,6 +14,7 @@ export default {
 
   effects: {
     // *供组件调用的方法名({ payload: { 参数 }}, { call, put }) {
+      //获取地址
     *getUserInfor({}, { call, put }) {
     //   const result = yield call(自定义名.service中的方法名, 参数);//如果使用  {参数}  ，则是一个对象
         const result = yield call(Shit.getUser, {});
@@ -26,6 +27,7 @@ export default {
             }
         })
     },
+    //获取首页图标
      *getImgObj({}, { call, put }) {
        const result = yield call (Shit.getImgUrl,{})
        yield put({
@@ -36,6 +38,10 @@ export default {
        })
       //  console.log(result.data);
        
+     },
+     //跳转
+     *getSearch({},{call,put}){
+
      }
 
   },

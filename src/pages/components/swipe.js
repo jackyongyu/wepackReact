@@ -10,7 +10,16 @@ class Swipe extends React.Component {
         this.state = {
             index:0,
         }
-        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
+    }
+
+    search=key=>{ 
+        const { dispatch } = this.props;
+        // dispatch({
+        //     type: "setting/getSearch",
+        // })
+        console.log(key);
+
     }
 
     componentDidMount() {
@@ -31,7 +40,7 @@ class Swipe extends React.Component {
             }).bind(this),
         }
         const obj=(obj)=>{
-            return Object.keys(obj).map(key =><li className="liStyle" key={key}><img src={obj[key]}/></li>)
+            return Object.keys(obj).map(key =><li className="liStyle" key={key} onClick={this.search.bind(this,key)}><img src={obj[key]}/></li>)
         }
         return (
             <div style={{background:'#fff'}}>

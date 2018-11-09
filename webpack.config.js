@@ -38,7 +38,9 @@ module.exports = {
         // 服务端口为1208
         port: 8003,
         // 自动打开浏览器
-        open: true
+        open: true,
+        //路由跳转成功
+        historyApiFallback: true
     },
     // 装载虚拟目录插件
     plugins: [htmlWebpackPlugin],

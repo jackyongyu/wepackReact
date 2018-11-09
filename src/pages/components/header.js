@@ -1,36 +1,46 @@
 import React, { Component } from 'react';
 import './header.less';
 import '../../static/style.css';
-import { connect  } from 'dva';
+import { connect } from 'dva';
 
 class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+
         };
     }
 
     componentDidMount() {
-        const { dispatch } = this.props;
-        dispatch({
-            type:"setting/getUserInfor",
-        })
-    
+        const { dispatch, type, action } = this.props;
+        if (action) {
+            dispatch({
+                type,
+            })
+        }
     }
 
     render() {
-        const {data}=this.props;
+        const { data } = this.props;
+        const { action } = this.props;
+        console.log(data);
         return (
             <div id="home-header" className="clear-fix">
-                <div className="home-header-left float-left">
-                    <span>{data?data.CityName:''}</span>&nbsp;
-                <i className="icon-chevron-down"></i>
-                </div>
-                <div className="home-header-right float-right">
+                {action ?
+                    <div className="home-header-left float-left">
+                        <span>{data ? data.CityName : ''}</span>&nbsp;
+                   <i className="icon-chevron-down"></i>
+                    </div>
+                    :
+                    <div className={action ? "home-header-left float-left" : "home-header-left float-left add-left"}>
+                        <i className="icon-chevron-down"></i>
+                    </div>
+                }
+                {action ? <div className="home-header-right float-right">
                     <i className="icon-person"></i>
                 </div>
-                <div className="home-header-middle">
+                    : ""}
+                <div className={action ? "home-header-middle" : "home-header-middle add-middle"}>
                     <div className="search-container">
                         <i className="icon-search"></i>
                         <input type="text" placeholder="请输入关键字"></input>
@@ -41,17 +51,17 @@ class Header extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => { 
+const mapStateToProps = (state) => {
     //见名知意，把state转换为props
     //可以打印state看看数据结构，然后放到data里
     // console.log(state);
     return {
-      data:state.setting.data,
+        data: state.setting.data,
     };
-  };
+};
 
 
-  export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(Header);
 
 /*dispatch 是一个函数方法，用来将 Action 发送给 Model 中的State。
 dispatch方法从哪里来？被 connect 的 Component 会自动在 Props 中拥有 dispatch 方法。*/

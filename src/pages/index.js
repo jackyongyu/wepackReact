@@ -7,7 +7,11 @@ export default class Total extends React.Component {
     render() {
         return ( 
             <div>
-                <Header/>
+                <Header
+                   type="setting/getUserInfor"
+                   action={true}
+                   searchBelong="mainPage"
+                />
                 <Swipe/>
                 <ExhibitionListCont/>
             </div>
