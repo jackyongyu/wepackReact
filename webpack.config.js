@@ -11,8 +11,8 @@ let htmlWebpackPlugin = new HtmlWebpackPlugin({
         "hash": true,
         "env": {
             "developement": {
-                "extraBabelPlugins": [//?
-                    ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
+                "extraBabelPlugins": [
+                    "dva-hmr"
                 ]
             }
         }

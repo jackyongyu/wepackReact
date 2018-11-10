@@ -1,5 +1,6 @@
 // import * as 自定义名 from '../services/service';
 import * as Shit from '../services/service';
+
 export default {
   namespace: 'setting',
 
@@ -37,12 +38,8 @@ export default {
           }
        })
       //  console.log(result.data);
-       
      },
-     //跳转
-     *getSearch({},{call,put}){
 
-     }
 
   },
 

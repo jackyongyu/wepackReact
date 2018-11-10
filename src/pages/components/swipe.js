@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactSwipe from 'react-swipe';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { connect } from 'dva';
+import { Link } from 'dva/router';
 import './swipe.less';
 
 class Swipe extends React.Component {
@@ -11,15 +12,6 @@ class Swipe extends React.Component {
             index:0,
         }
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-    }
-
-    search=key=>{ 
-        const { dispatch } = this.props;
-        // dispatch({
-        //     type: "setting/getSearch",
-        // })
-        console.log(key);
-
     }
 
     componentDidMount() {
@@ -39,8 +31,8 @@ class Swipe extends React.Component {
                 })
             }).bind(this),
         }
-        const obj=(obj)=>{
-            return Object.keys(obj).map(key =><li className="liStyle" key={key} onClick={this.search.bind(this,key)}><img src={obj[key]}/></li>)
+        const obj=(obj)=>{//?server needs key
+            return Object.keys(obj).map(key =><Link to= {`/search?key=${key}`} key={key}><li className="liStyle"><img src={obj[key]}/></li></Link>)
         }
         return (
             <div style={{background:'#fff'}}>
