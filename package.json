@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "start": "cross-env roadhog dev",
-    "start:no-proxy": "cross-env NO_PROXY=true roadhog dev",
-    "mock": "node --harmony ./mock/todoList.js"
+    "start": "webpack-dev-server --open"
   },
   "author": "",
   "license": "ISC",
@@ -19,19 +17,19 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.1.1",
     "css-loader": "^1.0.1",
     "html-webpack-plugin": "^3.2.0",
-    "cross-env": "^5.1.1",
-    "roadhog": "^2.0.5",
-    "roadhog-api-doc": "^0.3.3",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
+    "loadsh": "0.0.3",
     "mockjs": "^1.0.1-beta3",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.23.1",
+    "webpack-api-mocker": "^1.5.16",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
   },

@@ -1,6 +1,8 @@
 import dva from 'dva';
 import {createBrowserHistory as createHistory} from "history";
 import './index.less';
+
+
 // 创建应用
 const app = dva({history:createHistory()});
 // 注册 Model

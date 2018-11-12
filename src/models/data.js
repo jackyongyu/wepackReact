@@ -39,12 +39,24 @@ export default {
        })
       //  console.log(result.data);
      },
-
-
+     *getImgList({}, { call, put }) {
+      //  console.log("+++++");
+       
+      const result = yield call (Shit.getImgList,{})
+      yield put({
+        type:'save',
+        payload:{
+         data: result.data  //网络返回的要保留的数据
+         }
+      })
+      // console.log(result);
+      
+    },
   },
 
   reducers: {
      save(state, { payload: { data } }) {
+      //  console.log(data);
        return {
          ...state, 
           // data: Object.assign(state.data, data),  //第一个data是state的，第二个data是payload的

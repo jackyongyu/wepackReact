@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './header.less';
 import '../../static/style.css';
 import { connect } from 'dva';
+import { Link } from 'dva/router';
 
 class Header extends React.Component {
     constructor(props) {
@@ -20,10 +21,11 @@ class Header extends React.Component {
         }
     }
 
+
     render() {
         const { data } = this.props;
         const { action } = this.props;
-        console.log(data);
+        // console.log(data);
         return (
             <div id="home-header" className="clear-fix">
                 {action ?
@@ -33,7 +35,7 @@ class Header extends React.Component {
                     </div>
                     :
                     <div className={action ? "home-header-left float-left" : "home-header-left float-left add-left"}>
-                        <i className="icon-chevron-down"></i>
+                        <Link to= {`/`}><i className="icon-chevron-left"></i></Link>
                     </div>
                 }
                 {action ? <div className="home-header-right float-right">

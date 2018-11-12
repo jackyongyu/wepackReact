@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const apiMocker = require('webpack-api-mocker');
 
 // 负责将html文档虚拟到根目录下
 let htmlWebpackPlugin = new HtmlWebpackPlugin({
@@ -10,11 +11,19 @@ let htmlWebpackPlugin = new HtmlWebpackPlugin({
     option: {
         "hash": true,
         "env": {
-            "developement": {
+            "development": {
                 "extraBabelPlugins": [
-                    "dva-hmr"
+                  "dva-hmr",
+                  "transform-runtime",
+                  ["import",{ "libraryName":"antd","style":"css" }]
                 ]
-            }
+              },
+              "production": {
+                "extraBabelPlugins": [
+                  "transform-runtime",
+                  ["import",{ "libraryName":"antd","style":"css" }]
+                ]
+              }
         }
     }
 })
@@ -40,7 +49,15 @@ module.exports = {
         // 自动打开浏览器
         open: true,
         //路由跳转成功
-        historyApiFallback: true
+        historyApiFallback: true,
+        before(app){
+            apiMocker(app, path.resolve('./mock/user.js'), {
+                proxy: {
+                    '/repos/*': 'https://api.github.com/',
+                },
+                changeHost: true,
+            })
+        },
     },
     // 装载虚拟目录插件
     plugins: [htmlWebpackPlugin],

@@ -20,6 +20,10 @@ export function getImgUrl(prames){
   return request(`http://yapi.cnabc-inc.com/mock/80/getImgUrl/get/v1?${prames}`)
 }
 
+export function getImgList(prames){
+  return request(`http://localhost:8003/api/imgList?${prames}`)
+}
+
 
 
 
