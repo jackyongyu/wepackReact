@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server",
+    "start": "cross-env roadhog dev",
+    "start:no-proxy": "cross-env NO_PROXY=true roadhog dev",
     "mock": "node --harmony ./mock/todoList.js"
   },
   "author": "",
@@ -20,6 +21,9 @@
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^1.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "cross-env": "^5.1.1",
+    "roadhog": "^2.0.5",
+    "roadhog-api-doc": "^0.3.3",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "mockjs": "^1.0.1-beta3",
@@ -41,5 +45,10 @@
     "react-swipe": "^5.1.1",
     "swipe-js-iso": "^2.0.4",
     "whatwg-fetch": "^3.0.0"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ]
 }

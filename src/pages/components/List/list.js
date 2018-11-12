@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import '../../../../mock/todoList';
-import Axios from 'axios';
 import '../header.less';
 import './list.less';
 
@@ -19,14 +17,7 @@ export default class ExhibitionList extends React.Component {
 
 
 componentDidMount(){
-    console.log("++=");
-    Axios
-    .get('./data',{dataType:'json'})
-    .then(res=>{
-        // console.log(0); 
-        // 
-        return res.data;
-    })
+
 }
 
     render() {
