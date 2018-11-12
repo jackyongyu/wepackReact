@@ -40,8 +40,6 @@ export default {
       //  console.log(result.data);
      },
      *getImgList({}, { call, put }) {
-      //  console.log("+++++");
-       
       const result = yield call (Shit.getImgList,{})
       yield put({
         type:'save',
@@ -49,7 +47,7 @@ export default {
          data: result.data  //网络返回的要保留的数据
          }
       })
-      // console.log(result);
+      console.log(result);
       
     },
   },

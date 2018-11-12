@@ -21,7 +21,7 @@ export function getImgUrl(prames){
 }
 
 export function getImgList(prames){
-  return request(`http://localhost:8003/api/imgList?${prames}`)
+  return request(`http://localhost:8000/api/imgList?${prames}`)
 }
 
 

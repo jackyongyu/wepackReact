@@ -3,6 +3,8 @@ const imglist = require('./data/imglist');
 const accout=require('./data/accout')
 
 function delaySend(data) {
+  console.log(1);
+  
   return (req, res) => delay(() => res.json(data), 1000);
 }
 
