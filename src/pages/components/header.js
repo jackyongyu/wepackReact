@@ -53,9 +53,6 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    //见名知意，把state转换为props
-    //可以打印state看看数据结构，然后放到data里
-    // console.log(state);
     return {
         data: state.setting.data,
     };
