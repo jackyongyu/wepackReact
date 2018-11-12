@@ -25,7 +25,6 @@ class Header extends React.Component {
     render() {
         const { data } = this.props;
         const { action } = this.props;
-        // console.log(data);
         return (
             <div id="home-header" className="clear-fix">
                 {action ?
