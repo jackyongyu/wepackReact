@@ -17,7 +17,6 @@ export default class Total extends React.Component {
                 <ExhibitionListCont/>
                 <Echarts/>
             </div>
-             
             )
     }
 }
