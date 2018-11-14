@@ -8,24 +8,7 @@ let htmlWebpackPlugin = new HtmlWebpackPlugin({
     filename: 'index.html',
     // 虚拟html的模板为 src下的index.html
     template: path.resolve(__dirname, './src/index.html'),
-    option: {
-        "hash": true,
-        "env": {
-            "development": {
-                "extraBabelPlugins": [
-                  "dva-hmr",
-                  "transform-runtime",
-                  ["import",{ "libraryName":"antd","style":"css" }]
-                ]
-              },
-              "production": {
-                "extraBabelPlugins": [
-                  "transform-runtime",
-                  ["import",{ "libraryName":"antd","style":"css" }]
-                ]
-              }
-        }
-    }
+  
 })
 
 module.exports = {
@@ -45,7 +28,7 @@ module.exports = {
         // 自动压缩代码
         compress: true,
         // 服务端口为1208
-        port: 8000,
+        port: 8015,
         // 自动打开浏览器
         open: true,
         //路由跳转成功
@@ -66,8 +49,15 @@ module.exports = {
         // 根据文件后缀匹配规则
         rules: [
             // 配置js/jsx语法解析
-            { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
-            { test: /\.(png|woff|woff2|svg|ttf|eot)($|\?)/i, loader: 'url-loader?limit==5000' },
+            { 
+                test: /\.js|jsx$/, 
+                use: 'babel-loader', 
+                exclude: /node_modules/,
+             },
+            { 
+                test: /\.(png|woff|woff2|svg|ttf|eot)($|\?)/i,
+                 loader: 'url-loader'
+            },
             {
                 test: /\.less|css$/,
                 use: [{
@@ -77,10 +67,11 @@ module.exports = {
                 }, {
                     loader: "less-loader" // compiles Less to CSS
                 }]
-            }
+            },
+            
         ]
 
-    },
+    }
 
 
 }

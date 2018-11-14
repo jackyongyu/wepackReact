@@ -1,9 +1,9 @@
 import request from '../utils/request';
-
 // export function models中要调用的方法名 (参数) {
+  const location='http://yapi.cnabc-inc.com/mock/80/'
   export function getUser (prames) {
   // return request(`接口地址?${参数}`) //get方法请求
-  return request(`http://yapi.cnabc-inc.com/mock/80/getUserInfor/get/v1?${prames}`)
+  return request(`${location}getUserInfor/get/v1?${prames}`)
     /*
    return request(`接口地址`,{
     method: 'post',
@@ -17,11 +17,11 @@ import request from '../utils/request';
   */
 }
 export function getImgUrl(prames){
-  return request(`http://yapi.cnabc-inc.com/mock/80/getImgUrl/get/v1?${prames}`)
+  return request(`${location}getImgUrl/get/v1?${prames}`)
 }
 
 export function getImgList(prames){
-  return request(`http://localhost:8000/api/imgList?${prames}`)
+  return request(`${window.location.pathname}api/imgList?${prames}`)
 }
 
 
