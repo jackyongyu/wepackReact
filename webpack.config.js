@@ -21,6 +21,14 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'main.js'
     },
+    resolve: {
+        alias: {
+            echarts$: "echarts/src/echarts.js",
+            echarts: "echarts/src",
+            zrender$: "zrender/src/zrender.js",
+            zrender: "zrender/src"
+        }
+    },
     // 配置开发服务器, 并配置自动刷新
     devServer: {
         // 根目录下dist为基本目录
@@ -28,7 +36,7 @@ module.exports = {
         // 自动压缩代码
         compress: true,
         // 服务端口为1208
-        port: 8015,
+        port: 8016,
         // 自动打开浏览器
         open: true,
         //路由跳转成功
