@@ -1,7 +1,7 @@
 const { delay } = require('lodash');
 const imglist = require('./data/imglist');
 const accout=require('./data/accout')
-
+const ListData=reqire('./data/listData')
 function delaySend(data) {
   console.log(1);
   
@@ -18,7 +18,8 @@ function deleySendAccount(data){
 }
 const proxy = {
   'GET /api/imgList': delaySend(imglist),
-  'POST /api/login/account':deleySendAccount(accout)
+  // 'GET /api/ListData': delaySend(ListData),
+  'POST /api/login/account':deleySendAccount(accout),
 }
 
   module.exports = proxy;
