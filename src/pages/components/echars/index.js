@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table,DatePicker,Badge ,LocaleProvider } from 'antd';
+import { Table, DatePicker, Badge, LocaleProvider } from 'antd';
 import moment from 'moment';
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 import './index.less'
@@ -13,7 +13,7 @@ export default class Echarts extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+
         }
     }
 
@@ -21,10 +21,11 @@ export default class Echarts extends React.Component {
         // 绘制图表
         const colors = ['#5793f3', '#d14a61'];
         const option = {
-            title : {
-                text: '某地区蒸发量和降水量',
+            title: {
+                text: '阶梯瀑布图',
+                subtext: 'From ExcelHome',
             },
-        color: colors,
+            color: colors,
             tooltip: {
                 trigger: 'axis'
             },
@@ -85,7 +86,7 @@ export default class Echarts extends React.Component {
     }
 
     render() {
-        const {  RangePicker } = DatePicker;
+        const { RangePicker } = DatePicker;
         const dateFormat = 'YYYY/MM/DD';
 
         const columns = [{
@@ -93,95 +94,97 @@ export default class Echarts extends React.Component {
             dataIndex: 'key',
             key: 'key',
             // render: text => <a href="javascript:;">{key}</a>,
-            },{
+        }, {
             title: '小组名',
             dataIndex: 'name',
             key: 'name',
             render: text => <a href="javascript:;">{text}</a>,
-            }, {
+        }, {
             title: '出勤天数',
             dataIndex: 'age',
             key: 'age',
-            }, {
+        }, {
             title: '异常天数',
             dataIndex: 'address',
             key: 'address',
-            }, {
+        }, {
             title: '出勤工种',
             key: 'tags',
             dataIndex: 'tags',
             render: tags => (
                 <span>
-                {tags.map(tag => <span color="blue" key={tag}>{tag}</span>)}
+                    {tags.map(tag => <span color="blue" key={tag}>{tag}</span>)}
                 </span>
             ),
-            }, {
-                title: '入场时间',
-                key: 'time',
-                dataIndex: 'time',
-                render: text => (
-                    <span>
-                    {text   }
-                    </span>
-                ),
-                }, {
+        }, {
+            title: '入场时间',
+            key: 'time',
+            dataIndex: 'time',
+            render: text => (
+                <span>
+                    {text}
+                </span>
+            ),
+        }, {
             title: 'Action',
             key: 'action',
             render: (text, record) => (
                 <span>
-                <a href="javascript:;">Invite {record.name}</a>
+                    <a href="javascript:;">Invite {record.name}</a>
                 </span>
             ),
         }];
 
         const data = [{
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York',
-        tags: ['nice', 'developer'],
-        time:'1997/10/25',
+            key: '1',
+            name: 'John Brown',
+            age: 32,
+            address: 'New York',
+            tags: ['nice', 'developer'],
+            time: '1997/10/25',
         }, {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        address: 'London ',
-        tags: ['loser'],
-        time:'1997/1/25',
+            key: '2',
+            name: 'Jim Green',
+            age: 42,
+            address: 'London ',
+            tags: ['loser'],
+            time: '1997/1/25',
         }, {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sidney',
-        tags: ['cool', 'teacher'],
-        time:'1997/2/25',
+            key: '3',
+            name: 'Joe Black',
+            age: 32,
+            address: 'Sidney',
+            tags: ['cool', 'teacher'],
+            time: '1997/2/25',
         }];
 
         return (
             <div>
-                <div>
-                <LocaleProvider locale={zh_CN}>
-                    <RangePicker
-                        defaultValue={[moment('2015/01/01', dateFormat), moment('2015/01/01', dateFormat)]}
-                        format={dateFormat}
-                        allowClear={false}
-                    />
-                 </LocaleProvider>
+                <div className="content">
+                    <LocaleProvider locale={zh_CN}>
+                        <RangePicker
+                            defaultValue={[moment('2015/01/01', dateFormat), moment('2015/01/01', dateFormat)]}
+                            format={dateFormat}
+                            allowClear={false}
+                        />
+                    </LocaleProvider>
                     <span className='time'>本周</span><span className='time'>本月</span><span className='time'>本年</span>
-                </div>
-                <div style={{ display: 'flex' }}>
-                    <div id="main" style={{ width: '80%', height: 400 }}></div>
-                    <div style={{ width: '20%' }}>
-                        <ul>
+                    <div style={{ display: 'flex' }}>
+                        <div id="main" style={{ width: '80%', height: 400 }}></div>
+                        <ul style={{ width: '20%' }}>
+                            <li>考勤排名</li>
                             <li style={{ padding: '10px 5px' }}>
-                                 <Badge count={0} showZero/>
+                                <Badge count={0} showZero />
                                 <span style={{ marginLeft: '20px' }}>汪刚木工板</span>
                                 <span style={{ float: 'right', marginRight: '10px' }}>616小时</span>
                             </li>
                         </ul>
                     </div>
+
                 </div>
-                <Table columns={columns} dataSource={data} />
+                <div className="content" style={{marginBottom:'20px'}}>
+                    <Table columns={columns} dataSource={data} />
+                </div>
             </div>
         )
     }
