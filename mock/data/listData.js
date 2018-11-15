@@ -1,1 +1,1 @@
-exports.ListData=[]
+exports.ListData={timeBegin:'2012-12-1',timeEnd:'2012-12-22'}
