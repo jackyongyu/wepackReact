@@ -157,7 +157,20 @@ export default class Echarts extends React.Component {
             tags: ['cool', 'teacher'],
             time: '1997/2/25',
         }];
-
+        const number=[1,2]
+        const NumberList= props =>{
+            const ListItems = number.map((number) =>
+                <li style={{ padding: '10px 5px' }} key={number}>
+                    <Badge count={number} showZero />
+                    <span style={{ marginLeft: '20px' }}>汪刚木工板</span>
+                    <span style={{ float: 'right', marginRight: '10px' }}>{number}小时</span>
+                </li>)
+                return (<ul style={{ width: '20%' }}>
+                            <li>考勤排名</li>
+                            {ListItems}
+                        </ul>)
+        }
+       
         return (
             <div>
                 <div className="content">
@@ -171,18 +184,10 @@ export default class Echarts extends React.Component {
                     <span className='time'>本周</span><span className='time'>本月</span><span className='time'>本年</span>
                     <div style={{ display: 'flex' }}>
                         <div id="main" style={{ width: '80%', height: 400 }}></div>
-                        <ul style={{ width: '20%' }}>
-                            <li>考勤排名</li>
-                            <li style={{ padding: '10px 5px' }}>
-                                <Badge count={0} showZero />
-                                <span style={{ marginLeft: '20px' }}>汪刚木工板</span>
-                                <span style={{ float: 'right', marginRight: '10px' }}>616小时</span>
-                            </li>
-                        </ul>
+                        <NumberList number={number}/>
                     </div>
-
                 </div>
-                <div className="content" style={{marginBottom:'20px'}}>
+                <div className="content" style={{ marginBottom: '20px' }}>
                     <Table columns={columns} dataSource={data} />
                 </div>
             </div>
