@@ -92,8 +92,7 @@ export default class Echarts extends React.Component {
         const columns = [{
             title: '序号',
             dataIndex: 'key',
-            key: 'key',
-            // render: text => <a href="javascript:;">{key}</a>,
+            key: 'key'  
         }, {
             title: '小组名',
             dataIndex: 'name',
