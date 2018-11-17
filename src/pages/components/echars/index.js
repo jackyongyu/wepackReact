@@ -8,7 +8,7 @@ moment.locale('zh-cn');
 const echarts = require("echarts");
 require('echarts/chart/bar');
 
-// const monthFormat = 'YYYY/MM';
+const monthFormat = 'YYYY/MM';
 export default class Echarts extends React.Component {
     constructor(props) {
         super(props);
