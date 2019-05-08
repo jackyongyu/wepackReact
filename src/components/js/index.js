@@ -11,7 +11,7 @@ export default class Header extends React.Component {
 
     render() {
         return ( 
-            <div>hello,wor
+            <div>hello,world
                 <Button>你好</Button>
             </div> 
             )
